@@ -25,59 +25,49 @@ public class WolfCommands implements CommandExecutor {
 		
 		if(cmd.getName().equalsIgnoreCase("sit")) {
 			Iterator<LivingEntity> iter8r = player.getWorld().getLivingEntities().iterator();
-			do {
-				if (!iter8r.hasNext()) {
-					break;
-				}
-				LivingEntity entity = (LivingEntity)iter8r.next();
+			while (iter8r.hasNext()) {
+				LivingEntity entity = iter8r.next();
 				if(entity instanceof Wolf) {
 					Wolf thisWolf = (Wolf)entity;
 					if (thisWolf.isTamed() && thisWolf.getOwner().getName().equalsIgnoreCase(player.getName())) {
 						thisWolf.setSitting(true);
 					}
 				}
-			} while (true);
-			player.sendMessage((new StringBuilder()).append(ChatColor.GREEN).append("Your wolves are now on their asses.").toString());
+			}
+			player.sendMessage(ChatColor.GREEN + "Your wolves are now sitting.");
 			return true;
 		} 
 		
 		else if (cmd.getName().equalsIgnoreCase("stand")) {
 			Iterator<LivingEntity> iter8r = player.getWorld().getLivingEntities().iterator();
-			do {
-				if (!iter8r.hasNext()) {
-					break;
-				}
-				LivingEntity entity = (LivingEntity)iter8r.next();
+			while (iter8r.hasNext()) {
+				LivingEntity entity = iter8r.next();
 				if(entity instanceof Wolf) {
 					Wolf thisWolf = (Wolf)entity;
 					if (thisWolf.isTamed() && thisWolf.getOwner().getName().equalsIgnoreCase(player.getName())) {
 						Location here = player.getLocation();
-                        int twoUp = 2 + here.getBlockY();
-                        here.setY(twoUp);
+                        here.add(0, 2, 0);
                         thisWolf.teleport(here);
 						thisWolf.setSitting(false);
 					}
 				}
-			} while (true);
-			player.sendMessage((new StringBuilder()).append(ChatColor.GREEN).append("Your wolves are now ready for war.").toString());
+			}
+			player.sendMessage(ChatColor.GREEN + "Your wolves are now ready for war.");
 			return true;
 		}
 		else if(cmd.getName().equalsIgnoreCase("wolves")) {
 			int numOfWolves = 0;
 			Iterator<LivingEntity> iter8r = player.getWorld().getLivingEntities().iterator();
-			do {
-				if (!iter8r.hasNext()) {
-					break;
-				}
-				LivingEntity entity = (LivingEntity)iter8r.next();
+			 while (iter8r.hasNext()) {
+				LivingEntity entity = iter8r.next();
 				if(entity instanceof Wolf) {
 					Wolf thisWolf = (Wolf)entity;
 					if (thisWolf.isTamed() && thisWolf.getOwner().getName().equalsIgnoreCase(player.getName())) {
 						numOfWolves++;
 					}
 				}
-			} while (true);
-			player.sendMessage((new StringBuilder()).append(ChatColor.GREEN).append("You have ").append(numOfWolves).append(" in your pack.").toString());
+			}
+			player.sendMessage(ChatColor.GREEN + "You have " + numOfWolves + " in your pack.");
 			return true;
 			
 		} 
@@ -86,30 +76,24 @@ public class WolfCommands implements CommandExecutor {
 			
 			Iterator<LivingEntity> iter8r = player.getWorld().getLivingEntities().iterator();
 			int acc = 2;
-			do {
-				if (!iter8r.hasNext()) {
-					break;
-				}
-					LivingEntity entity = (LivingEntity)iter8r.next();
-					if(entity instanceof Wolf) {
-						Wolf thisWolf = (Wolf)entity;
-						if (thisWolf.isTamed() && thisWolf.getOwner().getName().equalsIgnoreCase(player.getName())) {
-							if (acc <= 0) {
-								Location here = player.getLocation();
-								int twoUp = 2 + here.getBlockY();
-								here.setY(twoUp);
-								thisWolf.teleport(here);
-								thisWolf.setSitting(false);
-								
-							}
-							else {
-								acc--;
-							}
+			while (iter8r.hasNext()) {
+				LivingEntity entity = iter8r.next();
+				if (entity instanceof Wolf) {
+					Wolf thisWolf = (Wolf) entity;
+					if (thisWolf.isTamed() && thisWolf.getOwner().getName().equalsIgnoreCase(player.getName())) {
+						if (acc <= 0) {
+							Location here = player.getLocation();
+	                        here.add(0, 2, 0);
+	                        thisWolf.teleport(here);
+							thisWolf.setSitting(false);
+						} 
+						else {
+							acc--;
 						}
 					}
-					
-			} while (true);
-			player.sendMessage((new StringBuilder()).append(ChatColor.GREEN).append("All but two of your wolves are ready for war.").toString());
+				}
+			}
+			player.sendMessage(ChatColor.GREEN + "Two puppies were left at home.");
 			return true;
 			
 		}
