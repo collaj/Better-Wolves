@@ -1,0 +1,16 @@
+name: Better Wolves
+main: wolves.BetterWolves
+version: 1.0
+commands:
+    sit:
+        description: Makes all of your tamed wolves sit.
+        usage: /<command>
+    stand:
+        description: Makes all of your tamed wolves stand.
+        usage: /<command>
+    wolves:
+        description: Counts the number of wolves in your possession.
+        usage: /<command>
+    safestand:
+        description: Makes all but two of your wolves stand.
+        usage: /<command>
