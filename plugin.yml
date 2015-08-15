@@ -14,3 +14,12 @@ commands:
     safestand:
         description: Makes all but two of your wolves stand.
         usage: /<command>
+    wolfcolor:
+        description: Allows a player to claim a collar color for their wolves.
+        usage: /<command> <color>
+    wolfrefresh:
+        description: Refreshes all of the wolves' collars.
+        usage: /<command>
+    allcolors:
+        description: Lists all of the colors claimed.
+        usage: /<command>
