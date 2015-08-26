@@ -11,6 +11,7 @@ import org.bukkit.DyeColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.AnimalTamer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -102,8 +103,9 @@ public class OwnerManagement implements Listener, CommandExecutor {
 					Wolf wolf = (Wolf) entity;
 					if (wolf.isTamed()) {
 						DyeColor color = DyeColor.RED;
-						if (claimedColors.containsKey(player.getName()))
-							color = claimedColors.get(player.getName());
+						AnimalTamer p = wolf.getOwner();
+						if (claimedColors.containsKey(p.getName()))
+							color = claimedColors.get(p.getName());
 						wolf.setCollarColor(color);
 					}
 				}
@@ -166,7 +168,6 @@ public class OwnerManagement implements Listener, CommandExecutor {
 		if (event.getEntityType() == EntityType.WOLF && event.getSpawnReason() == SpawnReason.BREEDING) {
 			Wolf wolf = (Wolf) event.getEntity();
 			String name = wolf.getOwner().getName();
-			Bukkit.broadcastMessage("YO");
 			if (claimedColors.containsKey(name))
 				wolf.setCollarColor(claimedColors.get(name));
 		}
