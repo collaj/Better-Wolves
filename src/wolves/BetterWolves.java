@@ -21,6 +21,12 @@ public final class BetterWolves extends JavaPlugin {
 		getCommand("wolfrefresh").setExecutor(om);
 		getCommand("allcolors").setExecutor(om);
 		getServer().getPluginManager().registerEvents(om, this);
+		
+		TeamWolves tw = new TeamWolves(this);
+		getCommand("jointeam").setExecutor(tw);
+		getCommand("getteam").setExecutor(tw);
+		getCommand("allteams").setExecutor(tw);
+		getServer().getPluginManager().registerEvents(tw, this);
 	}
 	
 	@Override

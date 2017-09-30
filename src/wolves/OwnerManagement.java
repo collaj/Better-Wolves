@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
 import org.bukkit.command.Command;
@@ -28,7 +27,7 @@ import org.bukkit.material.Dye;
 
 public class OwnerManagement implements Listener, CommandExecutor {
 	
-	BetterWolves main;
+	private BetterWolves main;
 	HashMap<String, DyeColor> claimedColors;
 	
 	public OwnerManagement(BetterWolves better) {
@@ -173,7 +172,7 @@ public class OwnerManagement implements Listener, CommandExecutor {
 		}
 	}
 	
-	
+	// only works if HashMap is a 1:1 relation
 	<T, R> T findKey(HashMap<T, R> hash, R value) {
 		Set<T> set = hash.keySet();
 		for (T t : set) {

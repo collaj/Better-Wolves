@@ -23,3 +23,12 @@ commands:
     allcolors:
         description: Lists all of the colors claimed.
         usage: /<command>
+    jointeam:
+        description: Allows a player to join the specified team.
+        usage: /<command> <team name>
+    getteam:
+        description: Gets what team you are on.
+        usage: /<command>
+    allteams:
+        description: Shows all players and their current team.
+        usage: /<command>
